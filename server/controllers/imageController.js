@@ -6,7 +6,9 @@ import FormData from 'form-data'
 
 export const generateImage=async (req,res)=>{
     try{
-        const {userId,prompt}=req.body
+        // const {userId,prompt}=req.body
+        const { prompt } = req.body
+        const userId = req.userId
 
         const user = await userModel.findById(userId)
 
@@ -17,7 +19,8 @@ export const generateImage=async (req,res)=>{
             });
         }
 
-        if(user.creditBalance === 0 || userModel.creditBalance < 0){
+        if(user.creditBalance <= 0){
+            //user.creditBalance === 0 || userModel.creditBalance < 0
             return res.json({
                 success:false,
                 message:'Insufficient Credit Balance',
