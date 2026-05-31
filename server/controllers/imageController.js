@@ -8,6 +8,7 @@ export const generateImage=async (req,res)=>{
     try{
         // const {userId,prompt}=req.body
         const { prompt } = req.body
+        // console.log("Prompt:", prompt);
         const userId = req.userId
 
         const user = await userModel.findById(userId)
@@ -54,6 +55,9 @@ export const generateImage=async (req,res)=>{
 
     }
     catch(error){
+        //console.log("STATUS =>", error.response?.status);
+        //console.log("DATA =>", error.response?.data?.toString());
+        //console.log("MESSAGE =>", error.message);
         console.log(error.message)
         res.json({
             success:false,
