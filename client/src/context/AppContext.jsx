@@ -65,7 +65,7 @@ const AppContextProvider = (props)=>{
         localStorage.removeItem('token');
         setToken('')
         setUser(null)
-
+        //window.location.href = '/' //ye logout ke baad home page pe bhejne ke liye use hua hai but sab reload karta hai 
     }
 
 
